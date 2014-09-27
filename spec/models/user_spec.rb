@@ -18,9 +18,10 @@ RSpec.describe User, :type => :model do
   it { should be_valid }
 
   it "should downcase email on save" do
-    @user.email = "DrewErny@Gmail.COM"
+    let(:mixed_email) { "DrewErny@Gmail.COM" }
+    @user.email = mixed_email
     @user.save
-    expect(@user.email).to eq "drewerny@gmail.com"
+    expect(@user.email).to eq mixed_email.downcase
   end
 
   context "when name is not present" do
