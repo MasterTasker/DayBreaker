@@ -30,6 +30,8 @@ gem 'autoprefixer-rails'
 
 gem 'uuid'
 
+gem 'simple_form'
+
 group :development do
   gem "binding_of_caller"
   gem 'better_errors'
