@@ -22,6 +22,17 @@ end
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+
+gem 'uuid'
+
+group :development do
+  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'pry'
+  gem 'pry-rails'
+end
