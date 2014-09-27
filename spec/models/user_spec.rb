@@ -10,10 +10,7 @@ RSpec.describe User, :type => :model do
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:authenticate) }
 
   it { should be_valid }
 
@@ -47,7 +44,7 @@ RSpec.describe User, :type => :model do
       @user.password = " "
       @user.password_confirmation = " "
     end
-    
+
     it { should_not be_valid }
   end
 
@@ -61,19 +58,4 @@ RSpec.describe User, :type => :model do
     it { should_not be_valid }
   end
 
-  describe "is being authenticated" do
-    before { @user.save }
-    let(:found_user) { User.find_by(email: @user.email) }
-
-    context "with a valid password" do
-      it { should eq found_user.authenticate(@user.password) }
-    end
-
-    context "without a valid password" do
-      let(:user_with_invalid_pass) { found_user.authenticate("invalid_pass") }
-
-      it { should_not eq user_with_invalid_pass }
-      specify { expect(user_with_invalid_pass).to be false }
-    end
-  end
 end
