@@ -1,34 +1,48 @@
 class Scheduler
-  def initialize(*tasks, opts = {})
+  # takes an array of tasks,
+  # returns 
+  def initialize(tasks, opts={})
+    # user's daily maximum work preference
+    @max_work_day = opts.fetch(:max_work_day, 8)
+    # user's minimum preferred task length
+    @min_work_period = opts.fetch(:min_work_period, 2)
+    # user's maximum preferred task length
+    @max_work_period = opts.fetch(:max_work_period, 4)
+    # pass in a task and some projected time spent on it, to get projected
+    # tasks for tomorrow
+    proj = opts.fetch(:projections, {})
+    proj.each do |task, time|
+      task.time_complete -= time
+    end
+    @tasks = tasks
   end
 
   # returns a hash of tasks for today's work day, greater than or equal to the
   # minimum possibl work for today
   def call
-    times = {}
-    min_work_day = task.total_min_work_day
-    if min_work_day < max_work_day then
-      min_work_day = max_work_day
+    schedule = {}
+    work_day = tasks[i].total_min_work_day
+    if @max_work_day < work_day then
+      @max_work_day = work_day
     end
 
-    tasks = tasks.sort {|a,b| b.daily_min <=> a.daily_min}
+    tasks = @tasks.sort { |a,b| b.daily_min <=> a.daily_min }
     tasks.each do |task|
       schedule[task] = schedule(task)
     end
 
-    today(tasks, schedule, min_work_day)
+    today(tasks, schedule, @max_work_day)
   end
-
-  private
 
   # given a task, assigns it a time
   def schedule(task)
-    if task.daily_min < preferred_min then
-      preferred_min
-    elsif task.daily_min > preferred_min and task.daily_min < preferred_max then
-      (preferred_min + preferred_max) / 2
+    work = task.daily_min
+    if work < @min_work_period then
+      @min_work_period
+    elsif work > @min_work_period and work < @max_work_period then
+      (@min_work_period + @max_work_period) / 2
     else
-      daily_min
+      work
     end
   end
 
