@@ -1,6 +1,10 @@
-<%= simple_form_for @task, url: root_path do |f| %>
+<div class="center">
+<%= simple_form_for @task, url: root_path, html: { class: 'form-horizontal' }, defaults: { input_html: {class: "input-xlarge" } } do |f| %>
   <%= f.input :name, required: true %>
   <%= f.input :completed_hours, required: true %>
   <%= f.input :estimated_hours, required: true %>
   <%= f.input :due_at, required: true %>
+  <br />
+  <%= f.submit class: "btn btn-success" %>
 <% end %>
+</div>
