@@ -115,7 +115,7 @@ div.botRow {
 }
 
 div.taskInfo {
-	width: 80%;
+	width: 100%;
 	height: 20px;
 	margin-bottom: 20px;
 }
@@ -123,5 +123,18 @@ div.taskInfo h4 {
 	float: left;
 }
 div.taskInfo small {
+	color: gray;
+	margin-top: 22px;
 	float: right;
+	text-align: right;
+}
+div.progress {
+	margin-bottom: 2px;
+}
+div.taskInfo .taskLeft {
+	color: green;
+}
+div.taskInfo .taskRight {
+	float: right;
+	color: orange;
 }
