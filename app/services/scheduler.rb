@@ -18,12 +18,16 @@ class Scheduler
     prioritized_tasks.each do |task|
       raw_time = time_for_task(task)
 
-      break if time_left_today < raw_time
+      if raw_time > time_left_today
+        raw_time = time_left_today
+      end
 
       rounded_time = raw_time.round_to_quarter
 
       tasks_with_time[task] = rounded_time
       time_left_today      -= rounded_time
+
+      break if time_left_today <= 0
     end
 
     tasks_with_time
