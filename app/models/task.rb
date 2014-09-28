@@ -11,10 +11,22 @@ class Task < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  def hours_til_due
+    (due_at - Time.current)/1.hour
+  end
+
+  def estimated_hours_left
+    (estimated_hours - completed_hours)
+  end
+
+  def priority
+    estimated_hours_left / hours_til_due
+  end
+
 private
 
   def set_defaults
-    self.due_at ||= Time.current
+    self.due_at ||= Time.current + 1.day
   end
 
 end
