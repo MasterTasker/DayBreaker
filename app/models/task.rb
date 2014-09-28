@@ -10,6 +10,7 @@ class Task < ActiveRecord::Base
   end
 
   after_initialize :set_defaults
+  before_save      :touch_completeness!
 
   def hours_til_due
     (due_at - Time.current)/1.hour
@@ -23,10 +24,17 @@ class Task < ActiveRecord::Base
     estimated_hours_left / hours_til_due
   end
 
-private
-
   def set_defaults
     self.due_at ||= Time.current + 1.day
+  end
+
+  def touch_completeness!
+    self.completed = (completed_hours >= estimated_hours)
+    true # callbacks can't return false
+  end
+
+  def make_complete!
+    self.estimated_hours = completed_hours
   end
 
 end

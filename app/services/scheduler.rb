@@ -2,11 +2,11 @@ class Scheduler
 
   attr_accessor :tasks, :max_hours_per_day, :min_hours_per_task, :max_hours_per_task
 
-  def initialize(tasks, opts={})
+  def initialize(tasks, user_preferences={})
     @tasks              = tasks
-    @max_hours_per_day  = opts.fetch(:max_hours_per_day,  8)
-    @min_hours_per_task = opts.fetch(:min_hours_per_task, 1)
-    @max_hours_per_task = opts.fetch(:max_hours_per_task, 4)
+    @max_hours_per_day  = user_preferences.fetch(:max_hours_per_day,  8)
+    @min_hours_per_task = user_preferences.fetch(:min_hours_per_task, 1)
+    @max_hours_per_task = user_preferences.fetch(:max_hours_per_task, 4)
   end
 
   def call
