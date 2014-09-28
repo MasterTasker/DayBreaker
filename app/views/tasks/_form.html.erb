@@ -6,7 +6,9 @@
   <%= f.input :due_at, as: :string, required: true %>
   <br />
   <%= link_to "Back", root_path, class: "btn btn-primary" %><%= f.submit class: "btn btn-success" %>
-  <br />
+<% end %>
+<br />
+<% if action_name == 'edit' %>
   <%= button_to "Delete", destroy_task_path(@task), class: 'btn btn-danger', style: 'width: 100%', data: { confirm: "Are you sure?" }, method: :delete %></p>
 <% end %>
 </div>
