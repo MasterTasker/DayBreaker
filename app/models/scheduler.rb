@@ -39,8 +39,6 @@ class Scheduler
     work = task.daily_min
     if work < @min_work_period then
       @min_work_period
-    elsif work > @min_work_period and work < @max_work_period then
-      (@min_work_period + @max_work_period) / 2
     else
       work
     end
