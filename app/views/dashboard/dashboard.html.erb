@@ -1,6 +1,4 @@
-<!-- </div> -->
-<center>
-<div class="constrain" align="left">
+<div class="constrain">
 	<div class="row topRow">
 		<!-- -->
 		<div class="col-md-4 col-xs-4 topLogo"><center><a href="landing"><img class="img-responsive" src="assets/daybreaker_logo.png"></a></center></div>
@@ -14,84 +12,60 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 midLeftToday">
-					<h3>Today <div class="totalHours">8 hrs</div></h3>
+
+          <!-- Today's tasks -->
+          <h3>Today <div class="totalHours"><%= @today.values.sum %></div></h3>
 					<div class="list-group">
-						<a href="#" class="list-group-item ">Cras justo odio <div class="totalHours"> 1 hrs</div></a>
-						<a href="#" class="list-group-item">Dapibus ac facilisis in<div class="totalHours"> 2 hrs</div></a>
-						<a href="#" class="list-group-item">Morbi leo risus<div class="totalHours"> 1 hrs</div></a>
-						<a href="#" class="list-group-item">Porta ac consectetur ac<div class="totalHours"> 1 hrs</div></a>
-						<a href="#" class="list-group-item">Vestibulum at eros<div class="totalHours"> 1 hrs</div></a>
-						<a href="#" class="list-group-item">Dapibus ac facilisis in<div class="totalHours"> 2 hrs</div></a>
+            <% @today.each do |task, time| %>
+              <a href="#" class="list-group-item ">
+                <%= task.title %><div class="totalHours"><%= time %> hrs</div>
+              </a>
+            <% end %>
 					</div>
+
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12 midLeftTomorrow">
+
+          <!-- Tomorrow's Tasks -->
 					<h3>Tomorrow <div class="totalHours">4 hrs</div></h3>
 					<div class="list-group">
-						<a href="#" class="list-group-item ">Cras justo odio <div class="totalHours"> 2 hrs</div></a>
-						<a href="#" class="list-group-item">Dapibus ac facilisis in<div class="totalHours"> 2 hrs</div></a>
+            <% @tomorrow.each do |task, time| %>
+              <a href="#" class="list-group-item ">
+                <%= task.title %><div class="totalHours"><%= time %> hrs</div>
+              </a>
+            <% end %>
 					</div>
+
 				</div>
 			</div>
 		</div>
+
 		<div class="col-md-8 midRight">
 			<div class="row">
 				<div class="col-md-12 midRightTask">
-					<h2>Tasks 	<div class="addNew"><div class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</div></div></h2>
+					<h2>Tasks<div class="addNew"><div class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</div></div></h2>
 					<div id="tasks">
-						<div id="task">
-							<div class="taskInfo">
-								<h4>Programming Language Grammar</h4><small>DUE 10/7 @ 5:25pm</small>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">80% Complete</span>
-								</div>
-							</div>
-							<div class="taskInfo">
-								<p><span class="taskLeft">3 hours complete</span>   <span class="taskRight">2 hours left</span></p>
-							</div>
-						</div>
-						<div id="task">
-							<div class="taskInfo">
-								<h4>Programming Language Lexer</h4><small>DUE 10/7 @ 5:25pm</small>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">60% Complete</span>
-								</div>
-							</div>
-							<div class="taskInfo">
-								<p><span class="taskLeft">3 hours complete</span>   <span class="taskRight">2 hours left</span></p>
-							</div>
-						</div>
-						<div id="task">
-							<div class="taskInfo">
-								<h4>Programming Language Recognizer</h4><small>DUE 10/7 @ 5:25pm</small>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-									<span class="sr-only">50% Complete</span>
-								</div>
-							</div>
-							<div class="taskInfo">
-								<p><span class="taskLeft">3 hours complete</span>   <span class="taskRight">2 hours left</span></p>
-							</div>
-						</div>
-						<div id="task">
-							<div class="taskInfo">
-								<h4>Get a life</h4> <small>DUE 10/7 @ 5:25pm</small>
-							</div>
-							<div class="progress">
-								<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%">
-									<span class="sr-only">2% Complete</span>
-								</div>
-							</div>
-							<div class="taskInfo">
-								<p><span class="taskLeft">3 hours complete</span>   <span class="taskRight">2 hours left</span></p>
-							</div>
-						</div>
+
+            <% @user.incomplete do |task| %>
+              <!-- Task -->
+              <div id="task">
+                <div class="taskInfo">
+                  <h4><%= task.title %></h4><small>DUE <%= task.due_date.strftime "%-m/%-d"%></small>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="<%= (0.0 + task.hours_complete) / task.hours_total %>">
+                    <span class="sr-only"><%= (0.0 + task.hours_complete) / task.hours_total %>% Complete</span>
+                  </div>
+                </div>
+                <div class="taskInfo">
+                  <p>
+                  <span class="taskLeft"><%= task.hours_complete %> hours complete</span>   <span class="taskRight"><%= task.hours_total - task.hours_complete %> hours left</span></p>
+                </div>
+              </div>
+              <!-- .task -->
+            <% end %>
 					</div>
 				</div>
 			</div>
@@ -103,4 +77,3 @@
 	</div>
 	<br/>
 </div>
-</center>
