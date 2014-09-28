@@ -14,7 +14,7 @@ class Advancer
       advance_by_a_day
     end
 
-    (0...advance_by).collect do
+    advance_by.times.collect do
       advance_by_a_day
     end
   end

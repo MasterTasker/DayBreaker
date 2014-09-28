@@ -5,10 +5,10 @@ class TasksController < ApplicationController
 
   def index
     user_preferences = current_user.preferences
-    days_to_show_at_once = user_preferences.delete(:days_to_show_at_once)
-    @future = days_in_the_future = params.fetch(:future, 0)
+    days_to_show_at_once = user_preferences.delete(:days_to_show_at_once).to_i
+    @future = days_in_the_future = params.fetch(:future, 0).to_i
 
-    @tasks = current_user.tasks
+    @tasks = current_user.incomplete_tasks
     @days  = Advancer.new(
       @tasks,
       user_preferences,

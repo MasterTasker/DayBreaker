@@ -29,7 +29,7 @@ class Task < ActiveRecord::Base
   end
 
   def estimated_hours_left
-    (estimated_hours - completed_hours)
+    estimated_hours - completed_hours
   end
 
   def priority
@@ -51,17 +51,17 @@ class Task < ActiveRecord::Base
   end
 
   def make_incomplete!
-    self.completed           = true
+    self.completed           = false
     self.completed_hours     = old_completed_hours
     self.old_completed_hours = 0
-    self.completed_at        = nil
+    self.completed_on        = nil
   end
 
   def make_complete!
-    self.completed           = false
+    self.completed           = true
     self.old_completed_hours = estimated_hours
     self.estimated_hours     = completed_hours
-    self.completed_at        = Time.current.to_date
+    self.completed_on        = Time.current.to_date
   end
 
 end
