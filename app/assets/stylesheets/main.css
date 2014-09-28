@@ -2,13 +2,8 @@
 	background-image: url("./../images/background.png");
 }*/
 
-body {
-	background-color: #FFFFF3;
-}
-
-a {
-	text-decoration: none;
-}
+body {background-color: #FFFFF3;}
+a {text-decoration: none;}
 
 div.logobox {
 	margin-left: 1px;
@@ -87,8 +82,8 @@ h1 {
 
 div.constrain {
 	max-width: 1024px;
-	padding-left: 4px;
-	padding-right: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 div.topRow {
 	min-height: 75px;	
