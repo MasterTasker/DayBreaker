@@ -12,7 +12,7 @@ class Scheduler
   def call
     prioritized_tasks = prioritize(tasks)
 
-    tasks_hash = {}
+    tasks_with_time = {}
     time_left_today = max_hours_per_day
 
     prioritized_tasks.each do |task|
@@ -20,13 +20,13 @@ class Scheduler
 
       break if time_left_today < raw_time
 
-      rounded_time = round_time_to_quarter_hour(raw_time)
+      rounded_time = raw_time.round_to_quarter
 
-      tasks_hash[task] = rounded_time
-      time_left_today -= rounded_time
+      tasks_with_time[task] = rounded_time
+      time_left_today      -= rounded_time
     end
 
-    tasks_hash
+    tasks_with_time
   end
 
 # IMPLEMENTATION

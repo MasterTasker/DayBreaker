@@ -2,7 +2,7 @@ class Advancer
 
   attr_accessor :tasks, :user_preferences, :advance_by, :beginning_from
 
-  def initialize(tasks, user_preferences: {}, advance_by: 2, beginning_from: 0)
+  def initialize(tasks, user_preferences = {}, beginning_from = 0, advance_by = 2)
     @tasks            = tasks
     @user_preferences = user_preferences
     @advance_by       = advance_by
