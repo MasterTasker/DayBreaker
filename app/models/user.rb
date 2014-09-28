@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   self.primary_key = :id
 
+  default_scope do
+    order :created_at
+  end
+
   extend Canonical::UUID
 
   has_many :tasks

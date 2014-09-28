@@ -5,6 +5,6 @@
     <div class="col-md-8 col-xs-8 topDash"><center><h1>New Task</h1></center></div>
   </div>
 
-  <%= render 'form' %>
+  <%= render partial: 'form', locals: { submit_path: create_task_path } %>
 
 </div>

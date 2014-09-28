@@ -22,7 +22,15 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.create!(params)
+    @task = current_user.tasks.create!(
+      params[:task].slice(
+        :due_at,
+        :name,
+        :estimated_hours,
+        :completed_hours
+      )
+    )
+    redirect_to root_path
   end
 
   def edit
@@ -31,19 +39,20 @@ class TasksController < ApplicationController
 
   def update
     @task = current_user.tasks.find(params[:id])
-    @task.attributes = params.slice(
+    @task.attributes = params[:task].slice(
       :due_at,
-      :completed,
       :name,
       :estimated_hours,
       :completed_hours
     )
     @task.save!
+    redirect_to root_path
   end
 
   def destroy
     @task = current_user.tasks.find(params[:id])
     @task.destroy!
+    redirect_to root_path
   end
 
 private

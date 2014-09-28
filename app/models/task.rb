@@ -25,7 +25,7 @@ class Task < ActiveRecord::Base
   before_save      :touch_completed!
 
   def hours_til_due
-    (due_at - Time.current)/1.hour
+    (due_at - Time.current.to_date)/1.hour
   end
 
   def estimated_hours_left
@@ -41,7 +41,7 @@ class Task < ActiveRecord::Base
   end
 
   def touch_completed!
-    if status = completed_hours >= estimated_hours
+    if completed_hours >= estimated_hours
       make_complete!
     else
       make_incomplete!
@@ -50,18 +50,22 @@ class Task < ActiveRecord::Base
     true # callbacks can't return false
   end
 
+  def percent_complete
+    (completed_hours / estimated_hours) * 100
+  end
+
   def make_incomplete!
     self.completed           = false
-    self.completed_hours     = old_completed_hours
-    self.old_completed_hours = 0
-    self.completed_on        = nil
+    # self.completed_hours     = old_completed_hours
+    # self.old_completed_hours = 0
+    # self.completed_on        = nil
   end
 
   def make_complete!
     self.completed           = true
-    self.old_completed_hours = estimated_hours
-    self.estimated_hours     = completed_hours
-    self.completed_on        = Time.current.to_date
+    # self.old_completed_hours = estimated_hours
+    # self.estimated_hours     = completed_hours
+    # self.completed_on        = Time.current.to_date
   end
 
 end

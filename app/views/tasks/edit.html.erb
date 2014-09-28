@@ -5,6 +5,6 @@
 		<div class="col-md-8 col-xs-8 topDash"><h1>Edit Task</h1></div>
 	</div>
 
-  <%= render 'form' %>
+  <%= render partial: 'form', locals: { submit_path: update_task_path } %>
 
 </div>
