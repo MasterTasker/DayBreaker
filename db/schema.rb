@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928130627) do
+ActiveRecord::Schema.define(version: 20140928133230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20140928130627) do
     t.uuid     "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "due_at"
-    t.boolean  "completed",                                    default: false, null: false
     t.decimal  "estimated_hours",     precision: 10, scale: 2, default: 0.0,   null: false
     t.decimal  "completed_hours",     precision: 10, scale: 2, default: 0.0,   null: false
+    t.datetime "due_at"
+    t.boolean  "completed",                                    default: false, null: false
     t.date     "completed_on"
     t.decimal  "old_completed_hours", precision: 10, scale: 2, default: 0.0,   null: false
   end
@@ -35,19 +35,23 @@ ActiveRecord::Schema.define(version: 20140928130627) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.string   "email",                  default: "",                   null: false
-    t.string   "encrypted_password",     default: "",                   null: false
+    t.string   "email",                                           default: "",                   null: false
+    t.string   "encrypted_password",                              default: "",                   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,                    null: false
+    t.integer  "sign_in_count",                                   default: 0,                    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "provider"
     t.string   "uid"
-    t.uuid     "id",                     default: "uuid_generate_v1()"
+    t.uuid     "id",                                              default: "uuid_generate_v1()"
+    t.integer  "days_to_show_at_once",                            default: 2,                    null: false
+    t.decimal  "max_hours_per_day",      precision: 10, scale: 2, default: 8.0,                  null: false
+    t.decimal  "min_hours_per_task",     precision: 10, scale: 2, default: 0.25,                 null: false
+    t.decimal  "max_hours_per_task",     precision: 10, scale: 2, default: 4.0,                  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
