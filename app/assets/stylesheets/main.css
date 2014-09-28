@@ -1,101 +1,74 @@
-/*body {
-	background-image: url("./../images/background.png");
+/*div.constrain{
+  background: url('background.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }*/
-
-body {background-color: #FFFFF3;}
-a {text-decoration: none;}
-
-div.logobox {
-	margin-left: 1px;
-	margin-top: 1px;
-	position: absolute;
-	z-index: 2;
-	background-image: linear-gradient(#54b4eb, #2aa4e7 50%, #2fa4e7 90%, #1d9ce5);
-	width: 25vw;
-	height: 25vw;
-	border-radius: 0 0 10% 10%;
-	max-height: 200px;
-	max-width: 200px;
+.tc {
+	margin: 0 auto;
+	text-align: center;
 }
 
-img.logo {
-	width: 75%;
-	height: 75%;
-	display: block;
-	position: absolute;
-	top: 40%;
-	left: 49%;
-	height: 30%;
-	width: 50%;
-	margin: -15% 0 0 -25%;
-	
+@media screen and (max-width: 545px) {
+    #desktopView{display: none;}
+    #mobileView{display: show;}
 }
-
-h1 {
-  font-family: 'Molengo', Georgia, Times, serif;
+@media screen and (min-width: 546px) {
+    #desktopView{display: show;}
+    #mobileView{display: none;}
 }
-/* container object for the card */
-.card {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-/* my personal photo */
-.headshot {
-  float: left;
-  width: 33%;
-}
-/* main information box */
-.info {
-  font-family: 'Lekton', Helvetica, Arial, sans-serif;
-  float: right;
-  width: 67%;
-  padding: 0 10px;
-}
-
-.name {
-  font-size: 32px;
-}
-
-@media screen and (max-width: 720px) {
-	.headshot {
+div.contentView {
 	width: 100%;
-	margin: 20px auto;
-	}
+	height: 400px;
+	background-color: #FFC666;
+	border-radius: 25px;
 }
-@media screen and (max-width: 720px) {
-	.info {
-		width: 100%;
-		margin: 0 auto;
-		float: left;
-		text-align: center
-	}
+div.signUpDiv {
+	margin-top: 165px;
 }
-
-@media screen and (max-width: 720px) {
-	.card {
-		max-width: 480px;
-		margin: 0 auto;
-	}
-}
-
-/***************************************************************************/
 
 div.constrain {
 	max-width: 1024px;
 	padding-left: 10px;
 	padding-right: 10px;
+	margin: 0 auto;
 }
 div.topRow {
-	min-height: 75px;	
+	min-height: 75px;
 	background-image: linear-gradient(#54b4eb, #2fa4e7 50%, #1d9ce5);
+	border-radius: 0px 0px 25px 25px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 div.topLogo {min-height: 75px;}
-div.topLogo img{max-height: 70px;}
-div.topDash {min-height: 75px;}
-
-div.midRow {
-	
+div.topLogo img{
+	padding: 25px;
+	max-height: 250px;
+	margin: 0 auto;
 }
+div.topDash {
+	min-height: 75px;
+	text-align: center;
+}
+div.topDash h1 {
+	margin-top: 18px;
+}
+div.topDash .aboutLink {
+	margin-top: 15px;
+	float: left;
+}
+div.topDash .signInLink {
+	margin-top: 15px;
+	float: right;
+}
+div.topDash .editName {
+	color: gray;
+	margin-top: 22px;
+	float: right;
+}
+
+div.midRow {margin-left: 15px;}
 div.midLeft {}
 div.midLeftLogHours {}
 div.midLeftToday {
@@ -115,9 +88,11 @@ div.addNew {
 	float: right;
 }
 
+div.window{
+	width: 100%; height: 90px; opacity: 100%
+}
+
 div.botRow {}
-
-
 div.taskInfo {
 	width: 100%;
 	height: 20px;
