@@ -1,0 +1,119 @@
+/*div.constrain{
+  background: url('background.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}*/
+.tc {
+	margin: 0 auto;
+	text-align: center;
+}
+
+@media screen and (max-width: 545px) {
+    #desktopView{display: none;}
+    #mobileView{display: show;}
+}
+@media screen and (min-width: 546px) {
+    #desktopView{display: show;}
+    #mobileView{display: none;}
+}
+div.contentView {
+	width: 100%;
+	height: 400px;
+	background-color: #FFC666;
+	border-radius: 25px;
+}
+div.signUpDiv {
+	margin-top: 165px;
+}
+
+div.constrain {
+	max-width: 1024px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0 auto;
+}
+div.topRow {
+	min-height: 75px;
+	background-image: linear-gradient(#54b4eb, #2fa4e7 50%, #1d9ce5);
+	border-radius: 0px 0px 25px 25px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+div.topLogo {min-height: 75px;}
+div.topLogo img{
+	padding: 25px;
+	max-height: 250px;
+	margin: 0 auto;
+}
+div.topDash {
+	min-height: 75px;
+	text-align: center;
+}
+div.topDash h1 {
+	margin-top: 18px;
+}
+div.topDash .aboutLink {
+	margin-top: 15px;
+	float: left;
+}
+div.topDash .signInLink {
+	margin-top: 15px;
+	float: right;
+}
+div.topDash .editName {
+	color: gray;
+	margin-top: 22px;
+	float: right;
+}
+
+div.midRow {margin-left: 15px;}
+div.midLeft {}
+div.midLeftLogHours {}
+div.midLeftToday {
+	min-height: 75px;
+}
+div.totalHours {
+	float: right;
+}
+div.midLeftTomorrow {
+	min-height: 75px;
+}
+div.midRight {}
+div.midRightTask {
+	min-height: 194px;	
+}
+div.addNew {
+	float: right;
+}
+
+div.window{
+	width: 100%; height: 90px; opacity: 100%
+}
+
+div.botRow {}
+div.taskInfo {
+	width: 100%;
+	height: 20px;
+	margin-bottom: 20px;
+}
+div.taskInfo h4 {
+	float: left;
+}
+div.taskInfo small {
+	color: gray;
+	margin-top: 22px;
+	float: right;
+	text-align: right;
+}
+div.progress {
+	margin-bottom: 2px;
+}
+div.taskInfo .taskLeft {
+	color: green;
+}
+div.taskInfo .taskRight {
+	float: right;
+	color: orange;
+}
