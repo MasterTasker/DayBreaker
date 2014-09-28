@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   extend Canonical::UUID
 
   has_many :tasks
+  has_many :complete_tasks,   -> { complete },   class_name: "Task"
+  has_many :incomplete_tasks, -> { incomplete }, class_name: "Task"
 
 ####
 # DEVISE AUTHENTICATION STUFF

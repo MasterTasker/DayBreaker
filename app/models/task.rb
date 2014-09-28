@@ -9,6 +9,18 @@ class Task < ActiveRecord::Base
     order :due_at
   end
 
+  class << self
+
+    def complete
+      where(completed: true)
+    end
+
+    def incomplete
+      where(completed: false)
+    end
+
+  end
+
   after_initialize :set_defaults
   before_save      :touch_completeness!
 
