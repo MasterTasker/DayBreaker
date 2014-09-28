@@ -7,8 +7,9 @@
 
   <% simple_form_for @task do |f| %>
     <%= f.input :title %>
-    <%= f.input :completed_hours %>
-    <%= f.input :total_hours %>
+    <%= f.input :hours_complete %>
+    <%= f.input :hours_total%>
+    <%= f.input :due_date %>
   <% end %>
 
 </div>
