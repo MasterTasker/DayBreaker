@@ -1,5 +1,5 @@
 /*div.constrain{
-  background: url('background.png') no-repeat center center fixed; 
+  background: url('background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -43,7 +43,7 @@ div.topRow {
 }
 div.topLogo {min-height: 75px;}
 div.topLogo img{
-	padding: 25px;
+	padding: 5px 25px;
 	max-height: 250px;
 	margin: 0 auto;
 }
@@ -82,7 +82,7 @@ div.midLeftTomorrow {
 }
 div.midRight {}
 div.midRightTask {
-	min-height: 194px;	
+	min-height: 194px;
 }
 div.addNew {
 	float: right;
