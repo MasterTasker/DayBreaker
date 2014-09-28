@@ -28,5 +28,8 @@ module TaskerMaster
     # config.i18n.default_locale = :de
 
     config.eager_load = true
+
+    config.logger = Logger.new(STDOUT)
+    config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
   end
 end
