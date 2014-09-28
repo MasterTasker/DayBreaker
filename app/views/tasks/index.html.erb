@@ -41,7 +41,7 @@
               <!-- Task -->
               <div id="task">
                 <div class="taskInfo">
-                  <h4><%= link_to task.name, edit_task_path(task) %></h4> <small>DUE <%= task.due_at %> (<%= distance_of_time_in_words task.due_at.to_date, Date.current %> from now)</small>
+                  <h4><%= link_to task.name, edit_task_path(task) %></h4> <small>DUE <%= task.due_at %> (<%= distance_of_time_in_words task.due_at, Date.current %> from now)</small>
                 </div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="<%= task.completed_hours / task.estimated_hours %>">
