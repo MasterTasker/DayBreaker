@@ -21,6 +21,8 @@ class Task < ActiveRecord::Base
 
   end
 
+  attr_accessor :running_calculation
+
   after_initialize :set_defaults
   before_save      :touch_completed!
 

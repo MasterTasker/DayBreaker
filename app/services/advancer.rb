@@ -28,13 +28,15 @@ class Advancer
     tasks_and_time = scheduler.call
 
     advanced_tasks = tasks_and_time.map do |task, time_to_advance|
-      task.completed_hours += time_to_advance
-      task.touch_completed!
+      task.running_calculation ||= task.completed_hours
+      task.running_calculation += time_to_advance
       task
     end
 
     @tasks = advanced_tasks.reject do |task|
-      task.completed?
+      task.running_calculation >= task.estimated_hours
+    end + tasks.reject do |task|
+      advanced_tasks.map(&:id).include? task.id
     end
 
     tasks_and_time
