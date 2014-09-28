@@ -1,0 +1,46 @@
+User should have
+  a prefered min task duration  = pmt
+  a prefered max task duration = pxt
+  a prefered max work per day = pxd
+
+Task algorithm
+  should prioritize sooner tasks
+  should 
+  consider
+    tasks are sorted by a priority of complete time over total time
+    to schedule tasks, you would divide time left by days remaining
+      taking into account users' preferences. 
+      TRY not to undershoot min, overshoot max
+      UNDERSHOOTING TASK TIME IF
+        less time remains in a task than the user's pref
+        less time remain in a day after dividing than user's pref
+      OVERSHOOTING TASK TIME IF
+        more time remains in a task than is completable per day
+        more time is availb
+      UNDERSHOOT DAILY TIME IF
+        there are fewer hours of tasks than there days
+      OVERSHOOTING DAILY TIME
+        there is not enough time to complete tasks by deadlines
+
+      time left  
+      time remain
+        
+
+for starting with highest daily min
+  calculate min work per day
+  if minwork < pmt
+    schedule task for today at pmt
+  if min > pmt and min < pxt
+    schedule task for ideal
+  if min > pxt
+    schedule at min
+  
+
+s=Scheduler.new([tasks])      
+
+Task Dispatcher
+
+DailyTask model
+  belongs to a task
+  belongs to a user
+  contains time for the task 

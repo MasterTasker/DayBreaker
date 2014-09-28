@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  self.primary_key = :id
+
+  extend Canonical::UUID
+
+  has_many :tasks
+
+####
+# DEVISE AUTHENTICATION STUFF
+##
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
@@ -8,5 +16,39 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }
 
-  before_save { self.email = email.downcase }
+  class << self
+
+    def from_omniauth(auth)
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.username = auth.info.nickname
+      end
+    end
+
+    def new_with_session(params, session)
+      if session["devise.user_attributes"]
+        new(session["devise.user_attributes"], without_protection: true) do |user|
+          user.attributes = params
+          user.valid?
+        end
+      else
+        super
+      end
+    end
+
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
 end
