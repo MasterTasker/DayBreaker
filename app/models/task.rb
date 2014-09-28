@@ -9,12 +9,59 @@ class Task < ActiveRecord::Base
     order :due_at
   end
 
-  after_initialize :set_defaults
+  class << self
 
-private
+    def complete
+      where(completed: true)
+    end
+
+    def incomplete
+      where(completed: false)
+    end
+
+  end
+
+  after_initialize :set_defaults
+  before_save      :touch_completed!
+
+  def hours_til_due
+    (due_at - Time.current)/1.hour
+  end
+
+  def estimated_hours_left
+    (estimated_hours - completed_hours)
+  end
+
+  def priority
+    estimated_hours_left / hours_til_due
+  end
 
   def set_defaults
-    self.due_at ||= Time.current
+    self.due_at ||= Time.current + 1.day
+  end
+
+  def touch_completed!
+    if status = completed_hours >= estimated_hours
+      make_complete!
+    else
+      make_incomplete!
+    end
+
+    true # callbacks can't return false
+  end
+
+  def make_incomplete!
+    self.completed           = true
+    self.completed_hours     = old_completed_hours
+    self.old_completed_hours = 0
+    self.completed_at        = nil
+  end
+
+  def make_complete!
+    self.completed           = false
+    self.old_completed_hours = estimated_hours
+    self.estimated_hours     = completed_hours
+    self.completed_at        = Time.current.to_date
   end
 
 end
