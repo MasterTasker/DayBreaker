@@ -2,6 +2,14 @@
 	background-image: url("./../images/background.png");
 }*/
 
+body {
+	background-color: #FFFFF3;
+}
+
+a {
+	text-decoration: none;
+}
+
 div.logobox {
 	margin-left: 1px;
 	margin-top: 1px;
@@ -79,6 +87,8 @@ h1 {
 
 div.constrain {
 	max-width: 1024px;
+	padding-left: 4px;
+	padding-right: 4px;
 }
 div.topRow {
 	min-height: 75px;	
@@ -92,27 +102,26 @@ div.midRow {
 	
 }
 div.midLeft {}
-div.midLeftLogHours {
-	
-}
+div.midLeftLogHours {}
 div.midLeftToday {
 	min-height: 75px;
-	
+}
+div.totalHours {
+	float: right;
 }
 div.midLeftTomorrow {
 	min-height: 75px;
-	
 }
 div.midRight {}
 div.midRightTask {
-	min-height: 194px;
-	
+	min-height: 194px;	
+}
+div.addNew {
+	float: right;
 }
 
+div.botRow {}
 
-div.botRow {
-	
-}
 
 div.taskInfo {
 	width: 100%;
