@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'dashboard/view'
+
   devise_for :users, {
     path_names: {
       sign_in: 'login',
