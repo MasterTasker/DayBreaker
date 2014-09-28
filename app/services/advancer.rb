@@ -29,7 +29,7 @@ class Advancer
 
     advanced_tasks = tasks_and_time.map do |task, time_to_advance|
       task.completed_hours += time_to_advance
-      task.touch_completeness!
+      task.touch_completed!
       task
     end
 
