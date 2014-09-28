@@ -7,7 +7,7 @@
   <br/>
 
   <div class="row midRow">
-    <div class="col-md-4 midLeft">
+    <div class="col-md-5 midLeft">
       <!-- <div class="row">
         <div class="col-xs-12 midLeftLogHours btn btn-primary">Log Hours</div>
       </div> -->
@@ -15,7 +15,7 @@
         <% @days.each.with_index do |day, number| %>
 
           <div class="col-md-12 <%= date_class(number)%>">
-            <h3><%= present_date(number) %> <div class="totalHours"><%= day.values.sum %> hours</div></h3>
+            <h3><%= present_date(number, @future) %> <div class="totalHours"><%= day.values.sum %> hours</div></h3>
             <div class="list-group">
 
               <% day.each do |task, time| %>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="col-md-8 midRight">
+    <div class="col-md-7 midRight">
       <div class="row">
         <div class="col-md-12 midRightTask">
           <h2>

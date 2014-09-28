@@ -1,12 +1,12 @@
 module ApplicationHelper
 
-  def present_date(days_from_now)
+  def present_date(days_from_now, future=0)
     if days_from_now.zero?
       'Today'
     elsif days_from_now == 1
       'Tomorrow'
     else
-      (Time.current.to_date + number.days).to_s
+      (Time.current.to_date + days_from_now.days + future.days).to_s
     end
   end
 
