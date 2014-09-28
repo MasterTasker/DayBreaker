@@ -1,2 +1,14 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<div class="constrain">
+  <!-- Top Bar -->
+	<div class="row topRow">
+		<div class="col-md-4 col-xs-4 topLogo"><center><a href="landing"><img class="img-responsive" src="assets/daybreaker_logo.png"></a></center></div>
+		<div class="col-md-8 col-xs-8 topDash"><center><h1>Edit Task</h1></center></div>
+	</div>
+
+  <% simple_form_for @task do |f| %>
+    <%= f.input :title %>
+    <%= f.input :completed_hours %>
+    <%= f.input :total_hours %>
+  <% end %>
+
+</div>

@@ -23,3 +23,10 @@
 
 body {background-color: #FFFFF3;}
 a {text-decoration: none;}
+
+div.constrain {
+	max-width: 1024px;
+	padding-left: 10px;
+	padding-right: 10px;
+  margin: 0 auto;
+}
