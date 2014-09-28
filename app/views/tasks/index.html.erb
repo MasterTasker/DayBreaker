@@ -51,8 +51,8 @@
                   <h4><%= link_to task.name, edit_task_path(task) %></h4> <small>DUE <%= task.due_at %> (<%= distance_of_time_in_words task.due_at, Date.current %> from now)</small>
                 </div>
                 <div class="progress">
-                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= task.percent_complete.to_i %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= task.percent_complete.to_i %>%; background-color: rgb(22, 196, 211)">
-                    <span class="sr-only"><%= task.percent_complete.to_i %>% Complete</span>
+                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= task.virtual_percent_complete.to_i %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= task.virtual_percent_complete.to_i %>%; background-color: rgb(22, 196, 211)">
+                    <span class="sr-only"><%= task.virtual_percent_complete.to_i %>% Complete</span>
                   </div>
                 </div>
                 <div class="taskInfo">
