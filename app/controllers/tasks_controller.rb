@@ -15,6 +15,8 @@ class TasksController < ApplicationController
       days_in_the_future,
       days_to_show_at_once
     ).call
+
+    @time_travel = (days_in_the_future > 1)
   end
 
   def new

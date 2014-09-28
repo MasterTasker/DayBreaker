@@ -21,10 +21,7 @@ class Task < ActiveRecord::Base
 
   end
 
-  attr_writer :running_calculation
-  def running_calculation
-    @running_calculation || 0
-  end
+  attr_accessor :running_calculation
 
   after_initialize :set_defaults
   before_save      :touch_completed!
@@ -60,7 +57,7 @@ class Task < ActiveRecord::Base
   end
 
   def virtual_percent_complete
-    (running_calculation / estimated_hours) * 100
+    ((running_calculation || 0) / estimated_hours) * 100
   end
 
   def make_incomplete!
