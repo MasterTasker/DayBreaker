@@ -9,12 +9,15 @@ class TasksController < ApplicationController
     @future = days_in_the_future = params.fetch(:future, 0).to_i
 
     @tasks = current_user.incomplete_tasks
-    @days  = Advancer.new(
+
+    @hidden_days, @displayed_days = Advancer.new(
       @tasks,
       user_preferences,
       days_in_the_future,
       days_to_show_at_once
     ).call
+
+    @days = @hidden_days + @displayed_days
 
     @time_travel = (days_in_the_future > 1)
   end

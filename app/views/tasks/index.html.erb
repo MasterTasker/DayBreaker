@@ -12,7 +12,7 @@
         <div class="col-xs-12 midLeftLogHours btn btn-primary">Log Hours</div>
       </div> -->
       <div class="row">
-        <% @days.each.with_index do |day, number| %>
+        <% @displayed_days.each.with_index do |day, number| %>
 
           <div class="col-md-12 <%= date_class(number)%>">
             <h3><%= present_date(number, @future) %> <div class="totalHours"><%= day.values.sum %> hours</div></h3>
@@ -45,22 +45,35 @@
           <div id="tasks">
 
             <% current_user.incomplete_tasks.each do |task| %>
-              <!-- Task -->
+
               <div id="task">
                 <div class="taskInfo">
-                  <h4><%= link_to task.name, edit_task_path(task) %></h4> <small>DUE <%= task.due_at %> (<%= distance_of_time_in_words task.due_at, Date.current %> from now)</small>
+                  <h4><%= link_to task.name, edit_task_path(task) %></h4>
+                  <small> DUE <%= task.due_at %> (<%= distance_of_time_in_words task.due_at, Date.current %> from now)</small>
                 </div>
                 <div class="progress">
-                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= task.percent_complete.to_i %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= task.percent_complete.to_i %>%; background-color: rgb(22, 196, 211)">
+                  <div class="progress-bar progress-bar-info"
+                    role="progressbar"
+                    aria-valuenow="<%= task.percent_complete.to_i %>"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    style="width: <%= task.percent_complete.to_i %>%; background-color: rgb(22, 196, 211)"
+                  >
                     <span class="sr-only"><%= task.percent_complete.to_i %>% Complete</span>
                   </div>
                 </div>
                 <div class="taskInfo">
                   <p>
-                  <span class="taskLeft"><%= task.completed_hours %> hours complete</span>   <span class="taskRight"><%= task.estimated_hours_left %> hours left</span></p>
+                    <span class="taskLeft">
+                      <%= task.completed_hours %> hours complete
+                    </span>
+                    <span class="taskRight">
+                      <%= task.estimated_hours_left %> hours left
+                    </span>
+                  </p>
                 </div>
               </div>
-              <!-- .task -->
+
             <% end %>
 
           </div>

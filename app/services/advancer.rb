@@ -10,13 +10,14 @@ class Advancer
   end
 
   def call
-    beginning_from.times do
-      advance_by_a_day
-    end
-
-    advance_by.times.collect do
-      advance_by_a_day
-    end
+    [
+      beginning_from.times.collect do
+        advance_by_a_day
+      end,
+      advance_by.times.collect do
+        advance_by_a_day
+      end
+    ]
   end
 
 # IMPLEMENTATION
