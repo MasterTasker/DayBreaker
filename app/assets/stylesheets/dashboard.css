@@ -1,0 +1,64 @@
+.BBBB {font-weight: bold;}
+
+div.bigBox {
+   height: 100%;
+   width: 100%;
+   background-color: red;
+}
+
+div.lCol {
+   width: 33%;
+   height: 80%;
+   border: 1px solid black;
+}
+
+div.lLogo{
+   width: 100%;
+   height: 20%;
+   border: 1px solid black;
+}
+
+div.log{
+   width: 100%;
+   height: 10%;
+   border: 1px solid black;
+}
+
+div.today{
+   width: 100%;
+   height: 35%;
+   min-height: 80px;
+   border: 1px solid black;
+}
+
+div.tomorrow{
+   width: 100%;
+   height: 35%;
+   min-height: 80px;
+   border: 1px solid black;
+}
+
+div.rCol {
+   width: 67%;
+   height: 80%;
+   border: 1px solid black;
+}
+
+div.dash {
+   width: 100%;
+   height: 20%;
+   border: 1px solid black;
+}
+
+div.task{
+   width: 100%;
+   height: 80%;
+   border: 1px solid black;
+}
+
+
+div.bottom {
+   width: 100%;
+   height: 20%;
+   border: 1px solid black;
+}
