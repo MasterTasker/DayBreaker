@@ -5,6 +5,10 @@ class Task < ActiveRecord::Base
 
   belongs_to :user
 
+  default_scope do
+    order :due_at
+  end
+
   after_initialize :set_defaults
 
 private
@@ -12,5 +16,5 @@ private
   def set_defaults
     self.due_at ||= Time.current
   end
-  
+
 end
