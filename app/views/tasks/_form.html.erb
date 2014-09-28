@@ -1,6 +1,6 @@
 <%= simple_form_for @task, url: root_path do |f| %>
-  <%= f.input :name %>
-  <%= f.input :completed_hours %>
-  <%= f.input :estimated_hours %>
-  <%= f.input :due_at %>
+  <%= f.input :name, required: true %>
+  <%= f.input :completed_hours, required: true %>
+  <%= f.input :estimated_hours, required: true %>
+  <%= f.input :due_at, required: true %>
 <% end %>
