@@ -1,15 +1,14 @@
 <div class="constrain">
   <!-- Top Bar -->
 	<div class="row topRow">
-		<div class="col-md-4 col-xs-4 topLogo"><center><a href="landing"><img class="img-responsive" src="assets/daybreaker_logo.png"></a></center></div>
-		<div class="col-md-8 col-xs-8 topDash"><center><h1>Edit Task</h1></center></div>
+		<div class="col-md-4 col-xs-4 topLogo"><a href="landing"><img class="img-responsive" src="assets/daybreaker_logo.png"></a></div>
+		<div class="col-md-8 col-xs-8 topDash"><h1>Edit Task</h1></div>
 	</div>
 
-  <% simple_form_for @task do |f| %>
-    <%= f.input :title %>
-    <%= f.input :hours_complete %>
-    <%= f.input :hours_total%>
-    <%= f.input :due_date %>
-  <% end %>
+	<div class="row midRow">
+		<div class="col-md-12 midLeft">
+		  <%= render 'form' %>
+		</div>
+	</div>
 
 </div>
